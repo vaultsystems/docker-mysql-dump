@@ -1,6 +1,6 @@
-FROM mysql:5.7
+FROM ubuntu:trusty
 
-RUN apt-get update && apt-get install -y python-pip python-dev gcc g++ --no-install-recommends && rm -rf /var/lib/apt/lists/* && pip install python-swiftclient python-keystoneclient 
+RUN apt-get update && apt-get install -y mysql-client python-swiftclient --no-install-recommends && apt-get clean && rm -rf /var/lib/apt/lists/* 
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
