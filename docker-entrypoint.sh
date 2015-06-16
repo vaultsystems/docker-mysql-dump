@@ -20,5 +20,5 @@ while true; do
   mysqldump -h mysql_backup --all-databases | gzip > $f
   swift upload mysql-dump $f
   rm $f
-  sleep 86400
+  sleep 1800
 done
