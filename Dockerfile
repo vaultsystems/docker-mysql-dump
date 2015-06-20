@@ -4,5 +4,5 @@ RUN apt-get update && apt-get install -y mysql-client python-swiftclient --no-in
 
 RUN echo Australia/Sydney > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
-COPY *.sh /
+ADD *.sh /
 ENTRYPOINT ["/entrypoint.sh"]

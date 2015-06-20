@@ -1,6 +1,7 @@
 #!/bin/bash -x
 set -e
-$f=`swift list mysql-dump | tail -1`
+f=`swift list mysql-dump | tail -1`
+swift stat mysql-dump $f | grep "Content Length"
 read -p "Are you sure you want to restore database dump '$f' ? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
