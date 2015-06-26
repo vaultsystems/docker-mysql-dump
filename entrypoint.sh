@@ -15,6 +15,10 @@ until mysql -h mysql_backup -e ";" ; do
 done
 
 while true; do
-  ./backup.sh
-  sleep 1800
+  if ps aux | grep -v grep | grep backup ; then
+    echo "Manual backup in progess, not backing up."
+  else
+    ./backup.sh
+  fi
+  sleep 7200
 done
