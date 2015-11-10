@@ -1,11 +1,7 @@
 #!/bin/bash -x
 # set permissions for tableau (unrelated to backup)
-mysql -h mysql -p$MYSQL_ROOT_PW -N -s -r -e "SELECT CONCAT(\"GRANT SELECT ON ESC4.\", table_name, \" TO tableau@'%';\"
-) FROM information_schema.TABLES WHERE table_schema = \"ESC4\" AND table_name <> \"jobs\" AND table_name <> \"old_jobs
-\";"
-mysql -h mysql -p$MYSQL_ROOT_PW -N -s -r -e "SELECT CONCAT(\"GRANT SELECT ON training_ESC4.\", table_name, \" TO table
-au@'%';\") FROM information_schema.TABLES WHERE table_schema = \"training_ESC4\" AND table_name <> \"jobs\" AND table_
-name <> \"old_jobs\";"
+mysql -h mysql -p$MYSQL_ROOT_PW -N -s -r -e "SELECT CONCAT(\"GRANT SELECT ON ESC4.\", table_name, \" TO tableau@'%';\") FROM information_schema.TABLES WHERE table_schema = \"ESC4\" AND table_name <> \"jobs\" AND table_name <> \"old_jobs\";"
+mysql -h mysql -p$MYSQL_ROOT_PW -N -s -r -e "SELECT CONCAT(\"GRANT SELECT ON training_ESC4.\", table_name, \" TO tableau@'%';\") FROM information_schema.TABLES WHERE table_schema = \"training_ESC4\" AND table_name <> \"jobs\" AND table_name <> \"old_jobs\";"
 # start backup
 set -e
 cd /mnt
