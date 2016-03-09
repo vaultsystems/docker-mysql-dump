@@ -16,6 +16,8 @@ new_size=`ls -l $new_backup | awk '{print $5}'`
 echo "Last backup: $last_size bytes , new backup: $new_size bytes"
 if [ "$new_size" -lt "1000000" ]; then
 	echo "Backup size smaller than 1MB, not backing up"
+elif [ "$new_size" -gt "5368709120" ]; then
+        swift upload -S 1073741824 mysql-dump $new_backup
 else
 	swift upload mysql-dump $new_backup
 fi
