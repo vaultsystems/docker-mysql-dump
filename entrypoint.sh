@@ -20,5 +20,5 @@ while true; do
   else
     ./backup.sh
   fi
-  sleep 7200
+  sleep 21600
 done
